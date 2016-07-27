@@ -1,0 +1,12 @@
+icafile: 'hivp/hivp_icacoffs_60d.npy'
+n_neighbors: 31
+pname: 'UBQ'
+numClusters: 16
+affdim: 10
+slice_val: 10
+kurtosis_window: 100
+numBlock: 10
+spmult_blocksize: 5
+saveDir: 'savefiles/'
+logfile: 'log/log.txt'
+figDir: 'savefiles/figures/'
