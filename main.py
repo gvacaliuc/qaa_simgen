@@ -56,14 +56,13 @@ def main(config):
                     os.path.join(saveDir, '.debug'),
                   ];
     makedirs(directories);
-
     if config['icafile'][-3:] == 'npy':
         icacoffs = np.load(config['icafile']);
         log.warning('Due to the typically large ICA file size, we recommend '+\
                     'running this on the memory mapped array, typically of the '+\
                     'form *icacoffs*.array',
                    );
-    print config.keys();
+
     elif 'icaDim' in config:
         if config['icafile'][-5:] == 'array':
             icacoffs = np.memmap(config['icafile'], dtype='float64').reshape(config['icaDim'],-1);
