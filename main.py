@@ -63,11 +63,12 @@ def main(config):
                     'running this on the memory mapped array, typically of the '+\
                     'form *icacoffs*.array',
                    );
-    elif 'icadim' in config:
+    print config.keys();
+    elif 'icaDim' in config:
         if config['icafile'][-5:] == 'array':
-            icacoffs = np.memmap(config['icafile'], dtype='float64').reshape(config['icadim'],-1);
+            icacoffs = np.memmap(config['icafile'], dtype='float64').reshape(config['icaDim'],-1);
     elif config['icafile'][-5:] == 'array':
-        raise IOError('If using memmapped array as input, you must specify the ICA dimension as \'icadim\' in your config.yaml.');
+        raise IOError('If using memmapped array as input, you must specify the ICA dimension as \'icaDim\' in your config.yaml.');
     else: raise ValueError('Please enter valid array or memmapped array for ICA.');
 
     numSamples = icacoffs.shape[1];
@@ -261,7 +262,7 @@ def validate(config):
         if not os.path.isdir(config[directory]):
             os.makedirs(config[directory]);
 
-    if config['icafile'][-5:] == 'array' and not 'icadim' in config:
+    if config['icafile'][-5:] == 'array' and not 'icaDim' in config:
         raise ValueError('We need the first dimension if you\'re passing a memory mapped array.');
 
     if not os.path.isdir(os.path.join(config['saveDir'], '.memmapped')):
